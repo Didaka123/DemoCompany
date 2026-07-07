@@ -17,6 +17,7 @@ namespace DemoCompany
         public int Internship { get; set; }
         public int Salary { get; set; }
         public string Position { get; set; }
+        public bool IsActive { get; set; }
 
 
         public Worker(int id, string name, string family, int age, int internship, int salary, string position)
@@ -28,6 +29,7 @@ namespace DemoCompany
             Internship = internship;
             Salary = salary;
             Position = position;
+            IsActive = true;
         }
 
         public static void AddNewWorker()
