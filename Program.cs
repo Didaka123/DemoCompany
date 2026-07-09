@@ -9,6 +9,8 @@ namespace DemoCompany
     {
         static void Main(string[] args)
         {
+            Worker.Workers = ReadWrite.ReadWorkers();
+            Display.Menu();
         }
     }
 }

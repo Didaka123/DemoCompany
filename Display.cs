@@ -36,7 +36,11 @@ namespace DemoCompany
                 case 4: Worker.InactiveWorkersReport(); break;
                 default: Environment.Exit(0); break;
             }
+
             Menu();
+
         }
+
+
     }
 }
