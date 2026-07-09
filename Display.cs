@@ -31,8 +31,9 @@ namespace DemoCompany
             switch (choose)
             {
                 case 1: Worker.AddNewWorker(); break;
-                case 2: Worker.EditWorkerData(); break;
-                case 3: Worker.(); break;
+                case 2: Worker.EditWorkersData(); break;
+                case 3: Worker.ActiveWorkersReport(); break;
+                case 4: Worker.InactiveWorkersReport(); break;
                 default: Environment.Exit(0); break;
             }
             Menu();

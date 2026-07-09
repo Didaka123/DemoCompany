@@ -18,6 +18,8 @@ namespace DemoCompany
         public int Salary { get; set; }
         public string Position { get; set; }
 
+        public bool IsActive { get; set; }
+
 
         public Worker(int id, string name, string family, int age, int internship, int salary, string position)
         {
