@@ -9,7 +9,7 @@ namespace DemoCompany
 {
     internal class ReadWrite
     {
-        private static string filePath = "staff.txt";
+        static string filePath = @"..\Data\staff.txt";
         public static void UpdateStaffFile()
         {
             List<string> lines = new List<string>();
@@ -47,8 +47,9 @@ namespace DemoCompany
                 Worker w = new Worker(id,name , family, age, internship,salary , position);
                 w.IsActive= isActive;
                 list.Add(w);
-                return list;
+                
             }
+            return list;
         }
     }
 }

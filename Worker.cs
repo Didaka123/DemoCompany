@@ -19,8 +19,6 @@ namespace DemoCompany
         public string Position { get; set; }
         public bool IsActive { get; set; }
 
-        public bool IsActive { get; set; }
-
 
         public Worker(int id, string name, string family, int age, int internship, int salary, string position)
         {
@@ -36,10 +34,10 @@ namespace DemoCompany
 
         public static void AddNewWorker()
         {
-            List<string> maleNames = new List<string>() { "Иван", "Димитър", "Георги", "Димитър", "Николай", "Стефан", "Васил", "Христо", "Мартин", "Тодор", "Ангел", "Емил", "Броис", "Асен", "Даниел", "Пламен", "Румен", "Красимир", "Симеон", "Валентин" };
+            List<string> maleNames = new List<string>() { "Иван", "Димитър", "Георги", "Димитър", "Николай", "Стефан", "Васил", "Христо", "Мартин", "Тодор", "Ангел", "Емил", "Борис", "Асен", "Даниел", "Пламен", "Румен", "Красимир", "Симеон", "Валентин" };
             List<string> maleFamilies = new List<string> { "Иванов", "Петров", "Георгиев", "Димитров", "Николов", "Стефанов", "Василев", "Христов", "Тодоров", "Ангелов", "Стоянов", "Попов", "Колев", "Маринов", "Йорданов", "Павлов", "Илиев", "Добрев", "Антонов", "Симеонов" };
             List<string> femaleNames = new List<string> { "Мария", "Елена", "Йорданка", "Пенка", "Радка", "Росица", "Силвия", "Даниела", "Десислава", "Гергана", "Теодора", "Анелия", "Милена", "Кристина", "Цветелина", "Надежда", "Виктория", "Снежана", "Нина", "Йоана" };
-            List<string> femaleFamilies = new List<string> { "Иванова", "Петрова", "Георгиева", "Димитрова", "Николова", "Стефанова", "Василева", "Христова", "Тодорова", "Ангелова", "Стоянова", "Попова", "Колева", "Маринов", "Йорданов", "Павлов", "Илиева", "Добрева", "Антонова", "Симеонова" };
+            List<string> femaleFamilies = new List<string> { "Иванова", "Петрова", "Георгиева", "Димитрова", "Николова", "Стефанова", "Василева", "Христова", "Тодорова", "Ангелова", "Стоянова", "Попова", "Колева", "Маринова", "Йорданова", "Павлова", "Илиева", "Добрева", "Антонова", "Симеонова" };
             Random rand = new Random();
             string[] candNames = new string[5];
             string[] candFamilies = new string[5];
@@ -154,62 +152,63 @@ namespace DemoCompany
             ReadWrite.UpdateStaffFile();
             Console.WriteLine("Данните бяха актуализирани успешно!");
         }
-    }
 
-    public static void ActiveWorkersReport()
-    {
-        Console.WriteLine("\n--- СПИСЪК НА АКТИВНИТЕ СЛУЖИТЕЛИ ---");
-        bool hasWorkers = false;
-
-        foreach (Worker w in Workers)
+        public static void ActiveWorkersReport()
         {
-            if (w.IsActive == true)
+            Console.WriteLine("\n--- СПИСЪК НА АКТИВНИТЕ СЛУЖИТЕЛИ ---");
+            bool hasWorkers = false;
+
+            foreach (Worker w in Workers)
             {
-                Console.WriteLine($"ID: {w.Id} | {w.Name} {w.Family} | Възраст: {w.Age} | Стаж: {w.Internship} г. | Заплата: {w.Salary} лв. | Длъжност: {w.Position}");
-                hasWorkers = true;
+                if (w.IsActive == true)
+                {
+                    Console.WriteLine($"ID: {w.Id} | {w.Name} {w.Family} | Възраст: {w.Age} | Стаж: {w.Internship} г. | Заплата: {w.Salary} лв. | Длъжност: {w.Position}");
+                    hasWorkers = true;
+                }
+            }
+
+            if (!hasWorkers)
+            {
+                Console.WriteLine("В момента няма активни служители.");
             }
         }
 
-        if (!hasWorkers)
+        public static void InactiveWorkersReport()
         {
-            Console.WriteLine("В момента няма активни служители.");
-        }
-    }
+            Console.WriteLine("\n--- СПИСЪК НА НАПУСНАЛИТЕ СЛУЖИТЕЛИ ---");
+            bool hasWorkers = false;
 
-
-    public static void InactiveWorkersReport()
-    {
-        Console.WriteLine("\n--- СПИСЪК НА НАПУСНАЛИТЕ СЛУЖИТЕЛИ ---");
-        bool hasWorkers = false;
-
-        foreach (Worker w in Workers)
-        {
-            if (w.IsActive == false)
+            foreach (Worker w in Workers)
             {
-                Console.WriteLine($"ID: {w.Id} | {w.Name} {w.Family} | Последна длъжност: {w.Position}");
-                hasWorkers = true;
+                if (w.IsActive == false)
+                {
+                    Console.WriteLine($"ID: {w.Id} | {w.Name} {w.Family} | Последна длъжност: {w.Position}");
+                    hasWorkers = true;
+                }
+            }
+
+            if (!hasWorkers)
+            {
+                Console.WriteLine("Няма регистрирани напуснали служители.");
             }
         }
 
-        if (!hasWorkers)
+        public static void NewYearTransition()
         {
-            Console.WriteLine("Няма регистрирани напуснали служители.");
-        }
-    }
-    public static void NewYearTransition()
-    {
-        Console.WriteLine("\nПреминаване в нова година...");
+            Console.WriteLine("\nПреминаване в нова година...");
 
-        foreach (Worker w in Workers)
-        {
-            if (w.IsActive == true)
+            foreach (Worker w in Workers)
             {
-                w.Internship++; 
-                w.Salary = (int)(w.Salary * 1.05);
+                if (w.IsActive == true)
+                {
+                    w.Internship++;
+                    w.Salary = (int)(w.Salary * 1.05);
+                }
             }
-        }
 
-        ReadWrite.UpdateStaffFile();
-        Console.WriteLine("Успешно преминаване! Стажът е увеличен и заплатите са вдигнати с 5%.");
+            ReadWrite.UpdateStaffFile();
+            Console.WriteLine("Успешно преминаване! Стажът е увеличен и заплатите са вдигнати с 5%.");
+        }
     }
 }
+

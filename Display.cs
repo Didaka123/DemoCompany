@@ -34,6 +34,7 @@ namespace DemoCompany
                 case 2: Worker.EditWorkersData(); break;
                 case 3: Worker.ActiveWorkersReport(); break;
                 case 4: Worker.InactiveWorkersReport(); break;
+                case 5: Worker.NewYearTransition(); break;
                 default: Environment.Exit(0); break;
             }
 
