@@ -201,6 +201,7 @@ namespace DemoCompany
             {
                 if (w.IsActive == true)
                 {
+                    w.Age++;
                     w.Internship++;
                     w.Salary = (int)(w.Salary * 1.05);
                 }
