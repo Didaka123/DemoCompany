@@ -9,7 +9,7 @@ namespace DemoCompany
 {
     internal class ReadWrite
     {
-        
+
         private static string filePath = @"..\..\Data\staff.txt";
         public static void UpdateStaffFile()
         {
