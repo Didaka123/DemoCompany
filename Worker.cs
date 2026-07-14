@@ -87,6 +87,7 @@ namespace DemoCompany
             {
                 nextId = Workers[Workers.Count - 1].Id + 1;
             }
+
             Worker newWorker = new Worker(nextId, chosenName, chosenFamily, chosenAge, 0, salary, position);
             newWorker.IsActive = true;
             Workers.Add(newWorker);
@@ -99,24 +100,24 @@ namespace DemoCompany
         {
             Console.Write("\nВъведете ID на служител за редакция: ");
             int searchId = int.Parse(Console.ReadLine());
-            Worker found = null;
+            Worker chosenEmployer = null;
 
             foreach (Worker w in Workers)
             {
                 if (w.Id == searchId)
                 {
-                    found = w;
+                    chosenEmployer = w;
                     break;
                 }
             }
 
-            if (found == null)
+            if (chosenEmployer == null)
             {
                 Console.WriteLine("Няма служител с такова ID!");
                 return;
             }
 
-            Console.WriteLine($"\nРедакция за: {found.Name} {found.Family}");
+            Console.WriteLine($"\nРедакция за: {chosenEmployer.Name} {chosenEmployer.Family}");
             Console.WriteLine("о Редактирай име");
             Console.WriteLine("о Редактирай длъжността (position)");
             Console.WriteLine("о Редактирай заплатата (salary)");
@@ -127,21 +128,21 @@ namespace DemoCompany
             if (choice.Contains("име"))
             {
                 Console.Write("Въведете ново име: ");
-                found.Name = Console.ReadLine();
+                chosenEmployer.Name = Console.ReadLine();
             }
             else if (choice.Contains("длъжност"))
             {
                 Console.Write("Въведете нова длъжност: ");
-                found.Position = Console.ReadLine();
+                chosenEmployer.Position = Console.ReadLine();
             }
             else if (choice.Contains("заплата"))
             {
                 Console.Write("Въведете нова заплата: ");
-                found.Salary = int.Parse(Console.ReadLine());
+                chosenEmployer.Salary = int.Parse(Console.ReadLine());
             }
             else if (choice.Contains("напускане") || choice.Contains("напуск"))
             {
-                found.IsActive = false;
+                chosenEmployer.IsActive = false;
                 Console.WriteLine("Служителят беше отбелязан като напуснал (isActive = false).");
             }
             else
